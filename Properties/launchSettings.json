@@ -17,7 +17,7 @@
       "applicationUrl": "http://localhost:5009",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "GOOGLE_APPLICATION_CREDENTIALS": "./firebaseConfigLeo.json"
+        "GOOGLE_APPLICATION_CREDENTIALS": "./Credentials/firebaseConfigLeo.json"
       }
     },
     "IIS Express": {

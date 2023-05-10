@@ -84,11 +84,16 @@ namespace ContinentalBackend.Controllers
                 return NotFound();
             }
 
-            alerta.Estado = false;
-            _context.Update(alerta);
-            await _context.SaveChangesAsync();
+            if (User.Identity.IsAuthenticated)
+            {
+                alerta.Estado = false;
+                _context.Update(alerta);
+                await _context.SaveChangesAsync();
 
-            return alerta;
+                return alerta;
+            }
+
+            return  Unauthorized();
         }
 
 
@@ -143,10 +148,16 @@ namespace ContinentalBackend.Controllers
                 return NotFound();
             }
 
-            _context.Alerta.Remove(alerta);
-            await _context.SaveChangesAsync();
+            if (User.Identity.IsAuthenticated)
+            {
+                _context.Alerta.Remove(alerta);
+                await _context.SaveChangesAsync();
 
-            return NoContent();
+                return NoContent();
+            }
+
+            return Unauthorized();
+
         }
 
         private bool AlertaExists(long id)
